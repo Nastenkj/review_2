@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 import { OrderCardProps } from './type';
 import { TIngredient } from '@utils-types';
@@ -48,10 +48,16 @@ export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
   if (!orderInfo) return null;
 
   return (
-    <OrderCardUI
-      orderInfo={orderInfo}
-      maxIngredients={maxIngredients}
-      locationState={{ background: location }}
-    />
+    <Link
+      to={`${location.pathname === '/profile/orders' ? '/profile/orders' : '/feed'}/${orderInfo.number}`}
+      state={{ backgroundLocation: location }}
+      className="link"
+    >
+      <OrderCardUI
+        orderInfo={orderInfo}
+        maxIngredients={maxIngredients}
+        locationState={{ background: location }}
+      />
+    </Link>
   );
 });
