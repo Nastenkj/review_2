@@ -1,21 +1,18 @@
-import { useLocation } from 'react-router-dom';
-import { useDispatch } from '../../services/store';
-import { logoutUser, clearUser } from '../../services/slices/userSlice';
-import { ProfileMenuUI } from '@ui';
 import { FC } from 'react';
+import { useDispatch } from '../../services/store';
+import { logoutUser } from '../../services/slices/userSlice';
+import { ProfileMenuUI } from '../ui/profile-menu/profile-menu';
 
-export const ProfileMenu: FC = () => {
-  const location = useLocation();
+interface ProfileMenuProps {
+  pathname: string;
+}
+
+export const ProfileMenu: FC<ProfileMenuProps> = ({ pathname }) => {
   const dispatch = useDispatch();
 
-  const handleLogout = async () => {
-    try {
-      await dispatch(logoutUser()).unwrap();
-      dispatch(clearUser());
-    } catch (error) {
-      console.error('Ошибка выхода:', error);
-    }
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
-  return <ProfileMenuUI handleLogout={handleLogout} pathname={location.pathname} />;
+  return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;
 };

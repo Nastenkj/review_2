@@ -3,9 +3,7 @@ import styles from './profile-menu.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
 import { ProfileMenuUIProps } from './type';
 
-export const ProfileMenuUI: FC<ProfileMenuUIProps> = ({
-  handleLogout
-}) => {
+export const ProfileMenuUI: FC<ProfileMenuUIProps> = ({ handleLogout }) => {
   const location = useLocation();
   return (
     <>
