@@ -8,8 +8,10 @@ import { RegisterUI } from '@ui-pages';
 export const Register: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state: RootState) => state.user);
-  
+  const { user, loading, error } = useSelector(
+    (state: RootState) => state.user
+  );
+
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +25,9 @@ export const Register: FC = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await dispatch(registerUser({ name: userName, email, password })).unwrap();
+      await dispatch(
+        registerUser({ name: userName, email, password })
+      ).unwrap();
     } catch (error) {
       // Ошибка обрабатывается в slice
     }

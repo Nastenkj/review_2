@@ -8,7 +8,9 @@ import { FC } from 'react';
 
 export const Feed: FC = () => {
   const dispatch = useDispatch();
-  const { feedOrders, feedData, loading } = useSelector((state: RootState) => state.orders);
+  const { feedOrders, feedData, loading } = useSelector(
+    (state: RootState) => state.orders
+  );
 
   useEffect(() => {
     dispatch(fetchFeedOrders());

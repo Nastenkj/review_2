@@ -1,3 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
 body {
   margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #131316;
+  color: #f2f2f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.text {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text_type_main-default {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.text_type_main-medium {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.text_type_main-large {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+.text_type_digits-default {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.text_type_digits-medium {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.text_type_digits-large {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+.mt-2 { margin-top: 16px; }
+.mt-8 { margin-top: 64px; }
+.mt-10 { margin-top: 80px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-4 { margin-bottom: 32px; }
+.mb-5 { margin-bottom: 40px; }
+.mb-6 { margin-bottom: 48px; }
+.ml-2 { margin-left: 16px; }
+.ml-8 { margin-left: 64px; }
+.mr-2 { margin-right: 16px; }
+.mr-4 { margin-right: 32px; }
+.mr-5 { margin-right: 40px; }
+.mr-10 { margin-right: 80px; }
+.pl-5 { padding-left: 40px; }
+.pr-5 { padding-right: 40px; }
+.p-4 { padding: 32px; }
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }

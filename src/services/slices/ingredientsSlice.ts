@@ -11,20 +11,21 @@ export interface IngredientsState {
 const initialState: IngredientsState = {
   ingredients: [],
   loading: false,
-  error: null,
+  error: null
 };
 
-export const fetchIngredients = createAsyncThunk<TIngredient[], void, { rejectValue: string }>(
-  'ingredients/fetchIngredients',
-  async (_, { rejectWithValue }) => {
-    try {
-      const ingredients = await getIngredientsApi();
-      return ingredients;
-    } catch (err: any) {
-      return rejectWithValue(err.message || 'Ошибка получения ингредиентов');
-    }
+export const fetchIngredients = createAsyncThunk<
+  TIngredient[],
+  void,
+  { rejectValue: string }
+>('ingredients/fetchIngredients', async (_, { rejectWithValue }) => {
+  try {
+    const ingredients = await getIngredientsApi();
+    return ingredients;
+  } catch (err: any) {
+    return rejectWithValue(err.message || 'Ошибка получения ингредиентов');
   }
-);
+});
 
 const ingredientsSlice = createSlice({
   name: 'ingredients',
@@ -36,15 +37,18 @@ const ingredientsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchIngredients.fulfilled, (state, action: PayloadAction<TIngredient[]>) => {
-        state.loading = false;
-        state.ingredients = action.payload;
-      })
+      .addCase(
+        fetchIngredients.fulfilled,
+        (state, action: PayloadAction<TIngredient[]>) => {
+          state.loading = false;
+          state.ingredients = action.payload;
+        }
+      )
       .addCase(fetchIngredients.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || 'Ошибка получения ингредиентов';
       });
-  },
+  }
 });
 
-export default ingredientsSlice.reducer; 
+export default ingredientsSlice.reducer;

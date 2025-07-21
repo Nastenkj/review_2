@@ -8,8 +8,10 @@ import { LoginUI } from '@ui-pages';
 export const Login: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state: RootState) => state.user);
-  
+  const { user, loading, error } = useSelector(
+    (state: RootState) => state.user
+  );
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

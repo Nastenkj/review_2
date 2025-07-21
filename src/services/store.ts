@@ -16,12 +16,12 @@ const rootReducer = combineReducers({
   user: userReducer,
   ingredients: ingredientsReducer,
   constructor: constructorReducer,
-  orders: ordersReducer,
+  orders: ordersReducer
 });
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production'
+  devTools: false
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

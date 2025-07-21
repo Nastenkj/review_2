@@ -7,7 +7,9 @@ import { FC } from 'react';
 
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();
-  const { userOrders, loading } = useSelector((state: RootState) => state.orders);
+  const { userOrders, loading } = useSelector(
+    (state: RootState) => state.orders
+  );
 
   useEffect(() => {
     dispatch(fetchUserOrders());
