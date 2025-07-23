@@ -32,7 +32,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
             }
           }
         ]
@@ -89,6 +91,7 @@ module.exports = {
     static: path.join(__dirname, './dist'),
     compress: true,
     historyApiFallback: true,
-    port: 4000
+    port: 4000,
+    hot: true
   }
 };

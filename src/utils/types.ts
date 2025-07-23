@@ -37,4 +37,10 @@ export type TUser = {
   name: string;
 };
 
+export type TUserUpdate = {
+  email?: string;
+  name?: string;
+  password?: string;
+};
+
 export type TTabMode = 'bun' | 'sauce' | 'main';
