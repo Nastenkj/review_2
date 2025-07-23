@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
   useLocation,
-  Navigate
+  Navigate,
+  useNavigate,
+  useParams
 } from 'react-router-dom';
 import '../../index.css';
 import styles from './app.module.css';
@@ -153,13 +155,33 @@ const ModalSwitch = () => {
   );
 };
 
-const App = () => (
-  <BrowserRouter>
-    <div className={styles.app}>
-      <AppHeader />
-      <ModalSwitch />
-    </div>
-  </BrowserRouter>
-);
+export const App: FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  // @ts-ignore
+  const background = location.state && location.state.backgroundLocation;
 
-export default App;
+  const handleCloseModal = () => navigate(-1);
+
+  return (
+    <>
+      <Routes location={background || location}>
+        <Route path='/' element={<ConstructorPage />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        {/* ... другие Route ... */}
+      </Routes>
+      {background && (
+        <Routes>
+          <Route
+            path='/ingredients/:id'
+            element={
+              <Modal title='Детали ингредиента' onClose={handleCloseModal}>
+                <IngredientDetails />
+              </Modal>
+            }
+          />
+        </Routes>
+      )}
+    </>
+  );
+};
