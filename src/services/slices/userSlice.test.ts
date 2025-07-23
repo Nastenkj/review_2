@@ -20,7 +20,7 @@ describe('userSlice', () => {
       error: { message: 'fail' }
     };
     const state = userReducer(undefined, action);
-    expect(state.error).toBe('Ошибка получения пользователя');
+    expect(state.error).toBe('Ошибка получения данных пользователя');
     expect(state.loading).toBe(false);
   });
 });
